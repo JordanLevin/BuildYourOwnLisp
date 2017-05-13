@@ -1,19 +1,14 @@
-H	prompt	8
-HãEHâ«	prompt	8
 HãE¯HãPHãE¯Hâ÷	prompt	51
-HãE¯ã@	prompt	11
-HãE¯ã@	prompt	11
-HãE¯ã@Dç	prompt	11
-HãE¯ã@Dç	prompt	11
 LASSERT	prompt.c	/^#define LASSERT(args, cond, err) \\$/
-LERR_BAD_NUM	prompt.c	49
-LERR_BAD_OP	prompt.c	49
-LERR_DIV_ZERO	prompt.c	49
-LVAL_ERR	prompt.c	46
-LVAL_NUM	prompt.c	46
-LVAL_QEXPR	prompt.c	46
-LVAL_SEXPR	prompt.c	46
-LVAL_SYM	prompt.c	46
+LERR_BAD_NUM	prompt.c	36
+LERR_BAD_OP	prompt.c	36
+LERR_DIV_ZERO	prompt.c	36
+LVAL_ERR	prompt.c	33
+LVAL_FUN	prompt.c	33
+LVAL_NUM	prompt.c	33
+LVAL_QEXPR	prompt.c	33
+LVAL_SEXPR	prompt.c	33
+LVAL_SYM	prompt.c	33
 MPCA_LANG_DEFAULT	mpc.h	335
 MPCA_LANG_PREDICTIVE	mpc.h	336
 MPCA_LANG_WHITESPACE_SENSITIVE	mpc.h	337
@@ -64,22 +59,26 @@ apply	mpc.c	913
 apply_to	mpc.c	914
 backtrack	mpc.c	87
 buffer	mpc.c	83
-buffer	prompt.c	12
-builtin	prompt.c	/^lval* builtin()$/
+buffer	prompt.c	10
 builtin	prompt.c	/^lval* builtin(lval* a, char* func){$/
+builtin_add	prompt.c	/^lval* builtin_add(lenv* e, lval* a){$/
+builtin_div	prompt.c	/^lval* builtin_div(lenv* e, lval* a){$/
 builtin_eval	prompt.c	/^lval* builtin_eval(lval* a){$/
 builtin_head	prompt.c	/^lval* builtin_head(lval* a){$/
 builtin_join	prompt.c	/^lval* builtin_join(lval* a){$/
-builtin_list	prompt.c	/^lval* builtin_list(lva* a){$/
-builtin_op	prompt.c	/^lval* builtin_op(lval* a, char* op){$/
+builtin_list	prompt.c	/^lval* builtin_list(lval* a){$/
+builtin_mul	prompt.c	/^lval* builtin_mul(lenv* e, lval* a){$/
+builtin_op	prompt.c	/^lval* builtin_op(lenv* e, lval* a, char* op){$/
+builtin_sub	prompt.c	/^lval* builtin_sub(lenv* e, lval* a){$/
 builtin_tail	prompt.c	/^lval* builtin_tail(lval* a){$/
-cell	prompt.c	42
+cell	prompt.c	60
 char_unescape_buffer	mpc.c	578
 children	mpc.h	269
 children_num	mpc.h	268
 col	mpc.h	32
 contents	mpc.h	266
-count	prompt.c	41
+count	prompt.c	47
+count	prompt.c	59
 curr_child	mpc.h	298
 curr_node	mpc.h	296
 d	mpc.c	897
@@ -87,7 +86,7 @@ data	mpc.c	926
 dx	mpc.c	899
 dx	mpc.c	900
 dxs	mpc.c	902
-err	prompt.c	38
+err	prompt.c	55
 error	mpc.h	60
 expect	mpc.c	907
 expected	mpc.h	44
@@ -104,23 +103,36 @@ file	mpc.c	84
 filename	mpc.c	79
 filename	mpc.h	42
 flags	mpc.c	3165
+fun	prompt.c	57
 grammar	mpc.c	3376
 ident	mpc.c	3374
 is_number	mpc.c	/^static int is_number(const char* s) {$/
 last	mpc.c	93
 lasts	mpc.c	92
+lbuiltin	prompt.c	44
+lenv	prompt.c	42
+lenv	prompt.c	46
+lenv_add_builtin	prompt.c	/^void lenv_add_builtin(lenv* e, char* name, lbuilti/
+lenv_add_builtins	prompt.c	/^void lenv_add_builtins(lenv* e){$/
+lenv_del	prompt.c	/^void lenv_del(lenv* e){$/
+lenv_get	prompt.c	/^lval* lenv_get(lenv* e, lval* k){$/
+lenv_new	prompt.c	/^lenv* lenv_new(void){$/
+lenv_put	prompt.c	/^void lenv_put(lenv* e, lval* k, lval* v){$/
 lf	mpc.c	889
 lf	mpc.c	899
 lift	mpc.c	906
-lval	prompt.c	35
-lval	prompt.c	43
+lval	prompt.c	41
+lval	prompt.c	52
 lval_add	prompt.c	/^lval* lval_add(lval* v, lval* x){$/
+lval_copy	prompt.c	/^lval* lval_copy(lval* v){$/
 lval_del	prompt.c	/^void lval_del(lval* v){$/
 lval_err	prompt.c	/^lval* lval_err(char* m){$/
-lval_eval	prompt.c	/^lval* lval_eval(lval* v){$/
-lval_eval_sexpr	prompt.c	/^lval* lval_eval_sexpr(lval* v){$/
+lval_eval	prompt.c	/^lval* lval_eval(lenv* e, lval* v){$/
+lval_eval_sexpr	prompt.c	/^lval* lval_eval_sexpr(lenv* e, lval* v){$/
 lval_expr_print	prompt.c	/^void lval_expr_print(lval* v, char open, char clos/
+lval_fun	prompt.c	/^lval* lval_fun(lbuiltin func){$/
 lval_join	prompt.c	/^lval* lval_join(lval* x, lval* y){$/
+lval_num	prompt.c	/^lval* lval_num(long x){$/
 lval_pop	prompt.c	/^lval* lval_pop(lval* v, int i){$/
 lval_print	prompt.c	/^void lval_print(lval* v){$/
 lval_println	prompt.c	/^void lval_println(lval* v){$/
@@ -458,7 +470,7 @@ n	mpc.c	902
 name	mpc.c	924
 name	mpc.c	3375
 not	mpc.c	916
-num	prompt.c	37
+num	prompt.c	54
 number_of_nodes	prompt.c	/^int number_of_nodes(mpc_ast_t* t){$/
 or	mpc.c	919
 order	mpc.h	299
@@ -482,12 +494,14 @@ state	mpc.h	267
 string	mpc.c	82
 string	mpc.c	912
 suppress	mpc.c	86
-sym	prompt.c	39
+sym	prompt.c	56
+syms	prompt.c	48
 tag	mpc.h	265
 type	mpc.c	78
 type	mpc.c	925
-type	prompt.c	36
+type	prompt.c	53
 va	mpc.c	3162
+vals	prompt.c	49
 x	mpc.c	889
 x	mpc.c	890
 x	mpc.c	892
